@@ -1,10 +1,6 @@
 import React from "react";
-
-interface PaginationProps {
-  totalPages: number;
-  currentPage: number;
-  paginate: (pageNumber: number) => void;
-}
+import { usePathname, useRouter } from "next/navigation";
+import { PaginationProps } from "./types/pagination.types";
 
 const Pagination: React.FC<PaginationProps> = ({
   totalPages,
@@ -12,7 +8,10 @@ const Pagination: React.FC<PaginationProps> = ({
   paginate,
 }) => {
   const maxPagesToShow = 5;
-  const handleClick = (pageNumber: number) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handlePaginate = (pageNumber: number) => {
     paginate(pageNumber);
   };
 
@@ -36,11 +35,12 @@ const Pagination: React.FC<PaginationProps> = ({
     }
 
     const pageNumbers = [];
+
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
         <button
           key={i}
-          onClick={() => handleClick(i)}
+          onClick={() => handlePaginate(i)}
           className={`px-2 py-1 mx-1 border rounded ${
             i === currentPage
               ? "bg-blue-500 text-white"
@@ -56,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <>
         {startPage > 1 && (
           <button
-            onClick={() => handleClick(startPage - maxPagesToShow)}
+            onClick={() => handlePaginate(startPage - maxPagesToShow)}
             className="px-2 py-1 mx-1 border rounded bg-white text-blue-500"
           >
             ...
@@ -65,7 +65,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {pageNumbers}
         {endPage < totalPages && (
           <button
-            onClick={() => handleClick(endPage + 1)}
+            onClick={() => handlePaginate(endPage + 1)}
             className="px-2 py-1 mx-1 border rounded bg-white text-blue-500"
           >
             ...
@@ -78,8 +78,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="flex justify-center items-center space-x-2">
       <button
-        onClick={() => handleClick(1)}
-        disabled={currentPage === 1}
+        onClick={() => handlePaginate(1)}
         className={`px-2 py-1 mx-1 border rounded ${
           currentPage === 1 ? "bg-gray-300" : "bg-white text-blue-500"
         }`}
@@ -87,27 +86,26 @@ const Pagination: React.FC<PaginationProps> = ({
         {"<<"}
       </button>
       <button
-        onClick={() => handleClick(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={() => handlePaginate(currentPage - 1)}
         className={`px-2 py-1 mx-1 border rounded ${
           currentPage === 1 ? "bg-gray-300" : "bg-white text-blue-500"
         }`}
+        disabled={currentPage === 1}
       >
         {"<"}
       </button>
       {renderPageNumbers()}
       <button
-        onClick={() => handleClick(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={() => handlePaginate(currentPage + 1)}
         className={`px-2 py-1 mx-1 border rounded ${
           currentPage === totalPages ? "bg-gray-300" : "bg-white text-blue-500"
         }`}
+        disabled={currentPage === totalPages}
       >
         {">"}
       </button>
       <button
-        onClick={() => handleClick(totalPages)}
-        disabled={currentPage === totalPages}
+        onClick={() => handlePaginate(totalPages)}
         className={`px-2 py-1 mx-1 border rounded ${
           currentPage === totalPages ? "bg-gray-300" : "bg-white text-blue-500"
         }`}
