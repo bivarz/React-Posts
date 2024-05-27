@@ -1,30 +1,43 @@
-import { useState, useMemo } from "react";
+type UsePaginationProps = { page: number; limit: number; total: number };
 
-const usePagination = (
-  items: any[],
-  itemsPerPage: number,
-  initialPage: number = 1
-) => {
-  const [currentPage, setCurrentPage] = useState(initialPage);
+export const ellipsisL = -10;
+export const ellipsisR = -20;
 
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+const generatePage = (page: number, totalPages: number) => {
+  const current = Math.min(page, totalPages);
+  const total = Math.max(1, totalPages);
 
-  const currentItems = useMemo(() => {
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    return items.slice(start, end);
-  }, [items, currentPage, itemsPerPage]);
+  if (total <= 7) {
+    return Array.from({ length: total }).map((_, i) => i + 1);
+  }
 
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
+  if (current < 3) {
+    return [1, 2, 3, ellipsisL, total - 1, total];
+  }
 
-  return {
-    currentItems,
-    currentPage,
-    totalPages,
-    paginate,
-  };
+  if (current === 3) {
+    return [1, 2, 3, 4, ellipsisL, total - 1, total];
+  }
+
+  if (current > total - 2) {
+    return [1, 2, ellipsisR, total - 2, total - 1, total];
+  }
+
+  if (current === total - 2) {
+    return [1, 2, ellipsisR, total - 3, total - 2, total - 1, total];
+  }
+
+  return [1, ellipsisL, current - 1, current, current + 1, ellipsisR, total];
 };
 
-export default usePagination;
+export const usePagination = ({ page, limit, total }: UsePaginationProps) => {
+  const totalPages = Math.ceil(total / limit);
+  const pages = generatePage(page, totalPages);
+
+  const isCurrentPage = (n: number) => n === page;
+
+  return {
+    isCurrentPage,
+    pages,
+  };
+};
