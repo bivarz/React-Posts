@@ -76,7 +76,7 @@ const DataFetcher = ({ initialPage }: DataFetcherProps) => {
 
       <Suspense fallback={<p>Loading...</p>}>
         {showError && <Error404 />}
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mb-4">
           {showPagination && (
             <Pagination
               totalPages={Math.ceil(data.length / limit)}
