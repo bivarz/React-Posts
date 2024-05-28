@@ -9,7 +9,7 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="pt-5 pr-11 w-full flex justify-end">
+    <div>
       <button
         aria-label="Toggle Dark Mode"
         type="button"
@@ -20,10 +20,10 @@ const ThemeToggle = () => {
         {theme === "dark" ? (
           <MdOutlineWbSunny
             data-cy="sun-icon"
-            className="h-5 w-5 text-orange-300"
+            className="h-6 w-6 text-orange-300"
           />
         ) : (
-          <FaMoon data-cy="moon-icon" className="h-5 w-5 text-darker-700" />
+          <FaMoon data-cy="moon-icon" className="h-6 w-5 text-darker-700" />
         )}
       </button>
     </div>
