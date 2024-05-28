@@ -22,7 +22,7 @@ const Pagination = ({
           {pages.map((page, idx) => {
             if (page < 0) {
               return (
-                <li key={page} className="w-9 h-8 p-2">
+                <li key={page} className="w-7 h-8 p-2">
                   ...
                 </li>
               );
@@ -32,7 +32,7 @@ const Pagination = ({
               <li key={page}>
                 <button
                   id={`${idx + 1}`}
-                  className={`w-9 h-8 p-2 border-0 rounded flex justify-center items-center ${
+                  className={`w-8 h-8 p-2 border-0 rounded flex justify-center items-center ${
                     isCurrentPage(page)
                       ? "hover:bag-darker-700 bg-darker-700 text-slate-50 dark:bg-darker-700 dark:text-darker-50"
                       : "  hover:bg-darker-100 bg-gray-200 text-darker-700 dark:bg-darker-500 dark:text-white   "

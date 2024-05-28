@@ -15,18 +15,18 @@ const PaginationSelector = ({ limit }: PaginationSelectorProps) => {
         id="pagination-limit"
         value={limit}
         onChange={(e) => handleChangeLimit(parseInt(e.target.value))}
-        className="px-2 h-8 py-1 border-[1px] border-darker-300 dark:border-0 rounded bg-slate-50 text-darker-900 dark:bg-darker-400 dark:text-slate-50"
+        className="px-2 h-8 py-1 border-[1px] border-darker-300 dark:border-0 rounded bg-slate-50 text-darker-900 dark:bg-darker-700 dark:text-slate-50"
       >
-        <option className="text-darker-500 dark:text-slate-50" value={5}>
+        <option className="text-darker-500 dark:text-white" value={5}>
           5
         </option>
-        <option className="text-darker-500 dark:text-slate-50" value={10}>
+        <option className="text-darker-500 dark:text-white" value={10}>
           10
         </option>
-        <option className="text-darker-500 dark:text-slate-50" value={15}>
+        <option className="text-darker-500 dark:text-white" value={15}>
           15
         </option>
-        <option className="text-darker-500 dark:text-slate-50" value={25}>
+        <option className="text-darker-500 dark:text-white" value={25}>
           25
         </option>
       </select>
