@@ -15,7 +15,7 @@ export default function Home() {
           <Tooltip message="Share Url">
             <ShareButton />
           </Tooltip>
-          <Tooltip message="Toggle theme">
+          <Tooltip message="Change Theme">
             <ThemeToggle />
           </Tooltip>
         </div>
