@@ -20,6 +20,7 @@ const ShareButton = () => {
   return (
     <div>
       <button
+        aria-label="share-url"
         onClick={handleShare}
         className="flex items-center justify-center rounded-lg p-2  text-darker-700 hover:bg-darker-100 dark:hover:bg-darker-700 dark:text-white"
       >
