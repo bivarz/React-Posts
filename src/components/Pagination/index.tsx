@@ -16,7 +16,7 @@ const Pagination = ({
   });
 
   return (
-    <div className="flex justify-center items-center space-x-2">
+    <div className="flex justify-center items-center space-x-2 mb-5">
       <div>
         <ul className="inline-flex -space-x-px text-base h-10 items-center gap-1 ">
           {pages.map((page, idx) => {
