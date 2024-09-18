@@ -13,6 +13,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
       },
+      {
+        protocol: "https",
+        hostname: "media4.giphy.com",
+      },
+      {
+        protocol: "https",
+        hostname: "media0.giphy.com",
+      },
     ],
   },
 };
