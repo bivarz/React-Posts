@@ -2,19 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-
-type Gif = {
-  id: string;
-  images: {
-    fixed_height: {
-      url: string;
-    };
-  };
-  title: string;
-};
+import Card from "../Card";
 
 const Search: React.FC = () => {
-  const [gifs, setGifs] = useState<Gif[]>([]);
+  const [gifs, setGifs] = useState<any[]>([]);
   const [query, setQuery] = useState<string>("");
   const apiKey = "pLURtkhVrUXr3KG25Gy5IvzziV5OrZGa";
 
@@ -52,7 +43,7 @@ const Search: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center flex-col gap-2">
-      <div className="flex  justify-center flex-col gap-2">
+      <div className="flex justify-center flex-col gap-2">
         <label className=" text-darker-700  dark:text-white">
           Find your GIF: {query}
         </label>
@@ -70,6 +61,22 @@ const Search: React.FC = () => {
             />
           </button>
         </div>
+      </div>
+      <div
+        id="card-wrapper"
+        className="flex justify-center max-w-screen-md flex-wrap"
+      >
+        {gifs?.map((item, idx) => (
+          <div key={idx} className="p-4 card-container">
+            <div className="relative h-40">
+              <img
+                src={item.images.original.url}
+                alt={item.title}
+                className="w-40 h-40 rounded-lg shadow-md bg-gray-200 dark:bg-darker-600 "
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
