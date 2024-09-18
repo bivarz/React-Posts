@@ -8,7 +8,6 @@ import { fetchData } from "@/data/api";
 import { DataFetcherProps, Post } from "./types/datafetcher.types";
 import Error404 from "../404";
 import { useTheme } from "@/context/theme-context";
-import { method } from "cypress/types/bluebird";
 
 const DataFetcher = ({ initialPage }: DataFetcherProps) => {
   const router = useRouter();

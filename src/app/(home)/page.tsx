@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import ShareButton from "@/components/ShareUrl";
 import Tooltip from "@/components/Tooltip";
+import Tab from "@/components/Tab";
 
-const DataFetcher = dynamic(() => import("@/components/DataFetcher"));
 const ThemeToggle = dynamic(() => import("@/components/ThemeToogle"));
 const ScrollToTop = dynamic(() => import("@/components/ScrollToTop"));
 
@@ -19,7 +19,7 @@ export default function Home() {
             <ThemeToggle />
           </Tooltip>
         </div>
-        <DataFetcher initialPage={1} />
+        <Tab />
         <ScrollToTop />
       </Suspense>
     </div>

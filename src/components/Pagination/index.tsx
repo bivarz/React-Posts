@@ -34,8 +34,8 @@ const Pagination = ({
                   id={`${idx + 1}`}
                   className={`w-8 h-8 p-2 border-0 rounded flex justify-center items-center ${
                     isCurrentPage(page)
-                      ? "hover:bag-darker-700 bg-darker-700 text-slate-50 dark:bg-darker-700 dark:text-darker-50"
-                      : "  hover:bg-darker-100 bg-gray-200 text-darker-700 dark:bg-darker-500 dark:text-white   "
+                      ? "hover:bg-darker-800 bg-darker-700 text-slate-50 dark:bg-darker-700 dark:text-darker-50"
+                      : "hover:bg-darker-100 bg-gray-200 text-darker-700 dark:bg-darker-500 dark:text-white   "
                   }`}
                   onClick={() => paginate(page)}
                 >
